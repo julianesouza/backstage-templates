@@ -43,7 +43,7 @@ resource "aws_instance" "helloworld" {
               EOF
 
   tags = {
-    Name = {{ cookiecutter.tag }}
+    Name = "${{ values.tag }}"
   }
 }
 

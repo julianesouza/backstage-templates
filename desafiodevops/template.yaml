@@ -32,6 +32,17 @@ spec:
           title: Tag
           type: string
           description: Project tag
+        region:
+          title: Region
+          type: string
+          description: Project region
+          default: us-east-1
+          enum:
+            - us-east-1
+            - us-east-2
+            - us-west-1
+            - us-west-2
+            - sa-east-1
         owner:
           title: Owner
           type: string
@@ -56,7 +67,6 @@ spec:
     - id: fetch
       name: Desafio Template
       action: fetch:template
-      cookiecutterCompat: true
       input:
         url: ./desafiodevops
         values:
@@ -64,6 +74,8 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
+          tag: ${{ parameters.tag }}
+          region: ${{ parameters.region }}
 
     - id: publish
       name: Publish
